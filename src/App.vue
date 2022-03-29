@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <HeaderBoolflix @search="ricercaStringa" />
-    <MainBoolflix :search-string="strSearch" />
+    <MainBoolflix :array-films="arrFilms" />
   </div>
 </template>
 
 <script>
 import HeaderBoolflix from './components/HeaderBoolflix'
 import MainBoolflix from './components/MainBoolflix'
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -17,13 +18,16 @@ export default {
   },
   data () {
     return {
-      strSearch: ''
+      strSearch: '',
+      arrFilms: null
+
     }
   },
   methods: {
     ricercaStringa (strSearch) {
       this.strSearch = strSearch
-      console.log(strSearch)
+      this.$emit('search', this.arrFilms)
+      return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results })
     }
   }
 }
