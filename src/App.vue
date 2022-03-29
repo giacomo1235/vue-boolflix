@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderBoolflix @search="ricercaStringa" />
-    <MainBoolflix :array-films="arrFilms" />
+    <MainBoolflix :array-series="arrSeries" :array-films="arrFilms" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       strSearch: '',
-      arrFilms: null
+      arrFilms: null,
+      arrSeries: null
 
     }
   },
@@ -27,7 +28,8 @@ export default {
     ricercaStringa (strSearch) {
       this.strSearch = strSearch
       this.$emit('search', this.arrFilms)
-      return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results })
+      this.$emit('search', this.arrSeries)
+      return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results }).then(axios.get(`https://api.themoviedb.org/3/search/tv?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrSeries = response.data.results }))
     }
   }
 }

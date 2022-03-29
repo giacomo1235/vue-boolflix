@@ -1,6 +1,14 @@
 <template>
   <div class="container-card">
-      <FilmCard v-for="film in arrayFilms" :key="film.poster_path" :film-data="film" />
+      <div class="title"><h1>FILM</h1></div>
+      <section class="films">
+          <FilmCard v-for="film in arrayFilms" :key="film.poster_path" :film-data="film" />
+      </section>
+      <div class="title"><h1>SERIE</h1></div>
+      <section class="series">
+          <FilmCard v-for="serie in arraySeries" :key="serie.poster_path" :film-data="serie" />
+      </section>
+
   </div>
 </template>
 
@@ -13,7 +21,8 @@ export default {
     }
   },
   props: {
-    arrayFilms: Array
+    arrayFilms: Array,
+    arraySeries: Array
   },
   components: {
     FilmCard
@@ -22,9 +31,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container-card {
+.films,
+.series {
     display: flex;
     flex-wrap: wrap;
+}
+.title {
+    margin: 5rem;
+    background-color: gold;
 }
 
 </style>
