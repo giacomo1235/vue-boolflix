@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-card">
       <p>{{searchString}}</p>
       <FilmCard v-for="film in arrFilms" :key="film.title" :film-data="film" />
   </div>
@@ -21,12 +21,21 @@ export default {
   components: {
     FilmCard
   },
-  created () {
-    axios.get('https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=la').then((response) => { this.arrFilms = response.data.results })
+  methods: {
+    prova () {
+
+    }
+  },
+  beforeUpdate () {
+    axios.get(`'https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.searchString}'`).then((response) => { this.arrFilms = response.data.results })
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 </style>

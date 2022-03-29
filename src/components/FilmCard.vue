@@ -1,10 +1,10 @@
 <template>
   <div>
-      <img :src="`https://image.tmdb.org/t/p/w500/${filmData.poster_path}`" :alt="filmData.original_title">
-      <h1>{{filmData.title}}</h1>
-      <h2>{{filmData.original_title}}</h2>
-      <h3>{{filmData.original_language}}</h3>
-      <h4>{{filmData.vote_average}}</h4>
+      <img :src="`https://image.tmdb.org/t/p/w200/${filmData.poster_path}`" :alt="filmData.original_title">
+      <h5>{{filmData.title}}</h5>
+      <p>{{filmData.original_title}}</p>
+      <p>{{filmData.original_language}}</p>
+      <p>{{filmData.vote_average}}</p>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+div {
+    width: 200px;
+    height: 400px;
+    margin: 2rem;
+}
 
 </style>
