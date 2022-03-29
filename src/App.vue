@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderBoolflix @search="provaPrima" />
+    <HeaderBoolflix @search="ricercaStringa" />
     <MainBoolflix :search-string="strSearch" />
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    provaPrima (strSearch) {
+    ricercaStringa (strSearch) {
       this.strSearch = strSearch
       console.log(strSearch)
     }
