@@ -1,17 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderBoolflix @search="provaPrima" />
+    <MainBoolflix :search-string="strSearch" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderBoolflix from './components/HeaderBoolflix'
+import MainBoolflix from './components/MainBoolflix'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderBoolflix,
+    MainBoolflix
+  },
+  data () {
+    return {
+      strSearch: ''
+    }
+  },
+  methods: {
+    provaPrima (strSearch) {
+      this.strSearch = strSearch
+      console.log(strSearch)
+    }
   }
 }
 </script>
