@@ -6,7 +6,7 @@
       <p>{{filmData.original_title}}</p>
       <p>{{filmData.original_name}}</p>
       <lang-flag :iso="filmData.original_language" :squared="false" />
-      <p>{{filmData.vote_average}}</p>
+      <p>{{votoStelline}}</p>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   name: 'FilmCard',
   props: {
     filmData: Object
+  },
+  data () {
+    return {
+      votoStelline: Math.floor(this.filmData.vote_average / 2)
+    }
   }
 
 }
