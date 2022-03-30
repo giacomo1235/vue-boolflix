@@ -7,10 +7,10 @@
     <p>{{filmData.original_name}}</p>
     <lang-flag :iso="filmData.original_language" :squared="false" />
     <div class="stars">
-      <span v-for="i in votoStelline" :key="i"><v-icon name="star"/></span>
+    <v-icon v-for="i in votoStelline" :key="i" scale="1.5" name="star"/>
     </div>
-    <p>{{votoStelline}}</p>
-    <p>{{filmData.vote_average}}</p>
+    <!-- <p>{{votoStelline}}</p> -->
+    <!-- <p>{{filmData.vote_average}}</p> -->
   </div>
 </template>
 
@@ -39,6 +39,9 @@ div {
 }
 .stars {
     margin: 0;
+    .fa-icon {
+      color: goldenrod;
+    }
 }
 
 </style>
