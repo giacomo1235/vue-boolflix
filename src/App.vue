@@ -18,6 +18,10 @@ export default {
   },
   data () {
     return {
+      apikey: '?api_key=f02ffa74b73711e6636395976b8f13f3',
+      apilink: 'https://api.themoviedb.org/3/search/',
+      film: 'movie',
+      series: 'tv',
       strSearch: '',
       arrFilms: null,
       arrSeries: null
@@ -29,7 +33,7 @@ export default {
       this.strSearch = strSearch
       this.$emit('search', this.arrFilms)
       this.$emit('search', this.arrSeries)
-      return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results }).then(axios.get(`https://api.themoviedb.org/3/search/tv?api_key=2a1eafb77e5173892c5f55c2d7d7a8c8&query=${this.strSearch}`).then((response) => { this.arrSeries = response.data.results }))
+      return axios.get(`${this.apilink}${this.film}${this.apikey}&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results }).then(axios.get(`${this.apilink}${this.series}${this.apikey}&query=${this.strSearch}`).then((response) => { this.arrSeries = response.data.results }))
     }
   }
 }
