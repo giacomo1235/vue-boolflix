@@ -20,6 +20,7 @@ export default {
     return {
       apikey: '?api_key=f02ffa74b73711e6636395976b8f13f3',
       apilink: 'https://api.themoviedb.org/3/search/',
+      language: 'it-IT',
       film: 'movie',
       series: 'tv',
       strSearch: '',
@@ -33,19 +34,16 @@ export default {
       this.strSearch = strSearch
       this.$emit('search', this.arrFilms)
       this.$emit('search', this.arrSeries)
-      return axios.get(`${this.apilink}${this.film}${this.apikey}&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results }).then(axios.get(`${this.apilink}${this.series}${this.apikey}&query=${this.strSearch}`).then((response) => { this.arrSeries = response.data.results }))
+      return axios.get(`${this.apilink}${this.film}${this.apikey}&language=${this.language}&query=${this.strSearch}`).then((response) => { this.arrFilms = response.data.results }).then(axios.get(`${this.apilink}${this.series}${this.apikey}&query=${this.strSearch}`).then((response) => { this.arrSeries = response.data.results }))
     }
   }
 }
 </script>
 
 <style lang="scss">
+@import "./assets/styles/style.scss";
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: $grey_background;
 }
 </style>
