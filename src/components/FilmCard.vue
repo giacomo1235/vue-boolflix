@@ -6,7 +6,9 @@
     <p>{{filmData.original_title}}</p>
     <p>{{filmData.original_name}}</p>
     <lang-flag :iso="filmData.original_language" :squared="false" />
-    <span>s</span>
+    <div class="stars">
+      <span v-for="i in votoStelline" :key="i"><v-icon name="star"/></span>
+    </div>
     <p>{{votoStelline}}</p>
     <p>{{filmData.vote_average}}</p>
   </div>
@@ -34,6 +36,9 @@ div {
     width: 200px;
     height: 100%;
     margin: 2rem;
+}
+.stars {
+    margin: 0;
 }
 
 </style>
