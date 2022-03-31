@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="front-card" @mouseenter="flipped = !flipped" v-if="flipped === true">
-      <img :src="`https://image.tmdb.org/t/p/w400/${filmData.poster_path}`" :alt="filmData.original_title">
+      <img :src="`https://image.tmdb.org/t/p/w400/${filmData.poster_path}`" :alt="filmData.original_title" v-if="filmData.poster_path != null">
+      <img v-if="filmData.poster_path == null" src="https://picsum.photos/id/237/400/550" alt="">
     </div>
     <div class="back-card" @mouseleave="flipped = !flipped" v-if="flipped === false">
       <p><strong>Titolo:</strong>{{filmData.title}}{{filmData.name}}</p>
@@ -12,7 +13,7 @@
       </div>
       <div class="stars">
         <strong>Voto:</strong>
-        <v-icon v-for="i in votoStelline" :key="i" scale="1.5" name="star"/>
+        <span v-for="i in votoStelline" :key="i" style="color: gold">&#9733;</span>
       </div>
       <p><strong>Overview:</strong>{{filmData.overview}}</p>
     </div>
@@ -43,9 +44,6 @@ export default {
 @import "../assets/styles/partials/variables";
 .stars {
     margin: 0;
-    .fa-icon {
-      color: goldenrod;
-    }
 }
 .back-card,
 .front-card {
