@@ -1,22 +1,20 @@
 <template>
   <div>
-    <div class="front-card" @click="flipped = !flipped" v-if="flipped === true">
-      <transition name="flip">
-        <img :src="`https://image.tmdb.org/t/p/w400/${filmData.poster_path}`" :alt="filmData.original_title">
-      </transition>
+    <div class="front-card" @mouseenter="flipped = !flipped" v-if="flipped === true">
+      <img :src="`https://image.tmdb.org/t/p/w400/${filmData.poster_path}`" :alt="filmData.original_title">
     </div>
-    <div class="back-card" @click="flipped = !flipped" v-if="flipped === false">
-        <p><strong>Titolo:</strong>{{filmData.title}}{{filmData.name}}</p>
-        <p><strong>Titolo originale:</strong>{{filmData.original_title}}{{filmData.name}}</p>
-        <div class="lingua">
-          <strong>Lingua originale:</strong>
-          <lang-flag :iso="filmData.original_language" :squared="false" />
-        </div>
-        <div class="stars">
-          <strong>Voto:</strong>
-          <v-icon v-for="i in votoStelline" :key="i" scale="1.5" name="star"/>
-        </div>
-        <p><strong>Overview:</strong>{{filmData.overview}}</p>
+    <div class="back-card" @mouseleave="flipped = !flipped" v-if="flipped === false">
+      <p><strong>Titolo:</strong>{{filmData.title}}{{filmData.name}}</p>
+      <p><strong>Titolo originale:</strong>{{filmData.original_title}}{{filmData.name}}</p>
+      <div class="lingua">
+        <strong>Lingua originale:</strong>
+        <lang-flag :iso="filmData.original_language" :squared="false" />
+      </div>
+      <div class="stars">
+        <strong>Voto:</strong>
+        <v-icon v-for="i in votoStelline" :key="i" scale="1.5" name="star"/>
+      </div>
+      <p><strong>Overview:</strong>{{filmData.overview}}</p>
     </div>
     <!-- <p>{{votoStelline}}</p> -->
     <!-- <p>{{filmData.vote_average}}</p> -->
