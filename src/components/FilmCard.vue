@@ -65,5 +65,8 @@ export default {
 .front-card {
     overflow: hidden;
 }
+.back-card {
+  background-color: $black_header;
+}
 
 </style>
