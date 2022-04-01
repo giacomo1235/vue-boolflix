@@ -44,6 +44,7 @@ export default {
 .series {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .title {
     margin: 5rem;
