@@ -16,6 +16,7 @@
         <span v-for="i in votoStelline" :key="i" style="color: gold">&#9733;</span>
       </div>
       <p><strong>Overview:</strong>{{filmData.overview}}</p>
+      <p><strong>Cast:</strong>{{}}</p>
     </div>
     <!-- <p>{{votoStelline}}</p> -->
     <!-- <p>{{filmData.vote_average}}</p> -->
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'FilmCard',
   props: {
@@ -33,6 +35,16 @@ export default {
       votoStelline: Math.round(this.filmData.vote_average / 2),
       flipped: true
     }
+  },
+  created () {
+    axios(`https://api.themoviedb.org/3/movie/${this.filmData.id}/credits?api_key=f02ffa74b73711e6636395976b8f13f3`)
+      .then((response) => {
+        console.log(response.data.cast)
+        const arrCast = response.data.cast
+        if (arrCast.length > 5) {
+          arrCast.length = 5
+        }
+      })
   },
   methods: {
 
